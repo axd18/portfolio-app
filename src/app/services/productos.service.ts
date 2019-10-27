@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../interfaces/producto.interface';
-import { Subscriber, from } from 'rxjs';
+
 
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Subscriber, from } from 'rxjs';
 })
 export class ProductosService {
   cargando = true;
+  productos: Producto [] = [];
 
   constructor( private http: HttpClient ) {
     this.cargarProductos();
@@ -19,6 +20,7 @@ export class ProductosService {
         .subscribe( (resp: Producto[]) => {
 
           console.log(resp);
+          this.productos = resp;
           this.cargando = false;
 
         });
