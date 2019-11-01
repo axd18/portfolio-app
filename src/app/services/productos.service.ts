@@ -25,6 +25,11 @@ export class ProductosService {
 
         });
   }
+
+  // tslint:disable-next-line:ban-types
+  getProducto( id: String ) {
+    return this.http.get(`https://angular-html-f5321.firebaseio.com/productos/${id}.json`);
+  }
 }
 
 
